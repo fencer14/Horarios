@@ -8,7 +8,7 @@ const HORARIOS = {
       ["entra", "07:30", "Facultad UTN"],
       ["sale", "13:30", "Facultad UTN", false],
       ["entra", "16:00", "Facultad UTN", false],
-      ["sale", "22:00", "Facultad UTN"],
+      ["sale", "22:30", "Facultad UTN"],
     ],
     "Miércoles": [
       ["entra", "10:00", "Inglés"],
@@ -16,7 +16,7 @@ const HORARIOS = {
       ["entra", "14:00", "Facultad UTN", false],
       ["sale", "16:00", "Facultad UTN", false],
       ["entra", "18:30", "Facultad UTN", false],
-      ["sale", "22:00", "Facultad UTN"],
+      ["sale", "22:30", "Facultad UTN"],
     ],
     "Jueves": [
       ["entra", "19:00", "Facultad UTN"],
