@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121212">
+  <title>Horarios</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wx" id="wx" aria-live="polite"></div>
+    <div class="clock" id="clock" role="img" aria-label="Hora actual"></div>
+  </header>
+
+  <nav class="ctl" aria-label="Controles">
+    <div class="seg" id="persona">
+      <button data-v="A" aria-pressed="true">Ambos</button>
+      <button data-v="E" aria-pressed="false">Ezequiel</button>
+      <button data-v="M" aria-pressed="false">Matteo</button>
+    </div>
+    <div class="seg" id="vista">
+      <button data-v="hoy" aria-pressed="true">Hoy</button>
+      <button data-v="semana" aria-pressed="false">Semana</button>
+    </div>
+    <button class="help" id="ayuda" aria-label="Leyenda" aria-expanded="false" aria-controls="leyenda">?</button>
+  </nav>
+  <div class="legend" id="leyenda" hidden></div>
+
+  <main id="main"></main>
+
+  <footer>San Rafael, Mendoza</footer>
+
+  <script src="horarios.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+:root {
+  --bg: #121212;
+  --card: #181818;
+  --line: #262626;
+  --text: #b4b2ac;
+  --dim: #6d6b66;
+  --off: #333331;
+  --red: #a8393a;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 var(--mono);
+  letter-spacing: .02em;
+}
+
+/* cabecera: clima + reloj */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 0 20px; }
+.wx { display: flex; align-items: center; gap: 10px; color: var(--dim); text-transform: uppercase; font-size: 12px; min-height: 28px; }
+.wx .pix { width: clamp(42px, 11.8vw, 67px); height: clamp(42px, 11.8vw, 67px); color: var(--text); } /* misma altura que el reloj (ancho × 7/25) */
+.clock { width: clamp(150px, 42vw, 240px); }
+.clock svg { display: block; width: 100%; height: auto; }
+
+/* controles */
+.ctl { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.seg button {
+  font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+  background: none; border: 0; border-radius: 999px; padding: 6px 14px;
+  color: var(--dim); cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--line); color: var(--text); }
+.seg button:focus-visible { outline: 1px solid var(--dim); }
+
+.help {
+  margin-left: auto; width: 34px; height: 34px; border-radius: 50%;
+  font: inherit; font-size: 14px; color: var(--dim); background: none;
+  border: 1px solid var(--line); cursor: pointer;
+}
+.help[aria-expanded="true"] { background: var(--line); color: var(--text); }
+.help:focus-visible { outline: 1px solid var(--dim); }
+.legend { margin: -8px 0 20px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; font-size: 13px; }
+.legend[hidden] { display: none; }
+.legend p { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+
+/* tablero */
+h2 { margin: 0 0 4px; font-size: 20px; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; }
+.note { margin: 0 0 16px; color: var(--dim); font-size: 12px; text-transform: uppercase; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.semana .grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.card.hoy { border-color: var(--red); }
+.card h3 { margin: 0 0 12px; font-size: 12px; font-weight: 400; color: var(--dim); text-transform: uppercase; letter-spacing: .1em; }
+.who { margin: 12px 0 6px; display: flex; align-items: center; gap: 8px; font-size: 12px; text-transform: uppercase; color: var(--dim); }
+.who::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+.card > .who:first-child { margin-top: 0; }
+.E { --c: #7f8c9a; }
+.M { --c: #a39378; }
+.A { --c: var(--text); }
+.tag { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 82px; font-size: 11px; text-transform: uppercase; color: var(--dim); }
+.tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+.empty { color: var(--dim); font-size: 12px; }
+
+/* eventos */
+.ev { border-top: 1px solid var(--line); }
+.ev summary { display: flex; align-items: center; gap: 12px; padding: 10px 0; cursor: pointer; list-style: none; }
+.ev summary::-webkit-details-marker { display: none; }
+.ev.nomat summary { cursor: default; }
+.card > .ev:first-child { border-top: 0; }
+.card > .ev:first-child summary { padding-top: 0; }
+.ev .t { font-size: 16px; }
+.ev.off .t { color: var(--dim); text-decoration: line-through; text-decoration-color: var(--off); }
+.mat { margin: 0 0 10px; color: var(--dim); font-size: 12px; }
+
+/* banderas e íconos pixelados */
+.pix { width: 18px; height: 18px; }
+.flag { display: inline-flex; color: var(--red); transition: color .6s; }
+.flag .pix + .pix { margin-left: -6px; }
+.flag.off { color: var(--off); }
+
+footer { margin-top: 28px; color: var(--dim); font-size: 11px; text-transform: uppercase; text-align: center; }
+
+@media (max-width: 480px) {
+  body { padding: 12px; }
+  .seg { flex: 1 1 auto; }
+  .seg button { flex: 1; padding: 6px 8px; }
+}
